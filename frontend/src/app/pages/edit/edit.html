@@ -1,0 +1,45 @@
+<div class="container mt-5">
+  <form (ngSubmit)='editPost()' class="w-50 m-auto" method="Post">
+    @if (successMsg) {
+    <p class="alert alert-success mt-2">{{ successMsg}}</p>
+    }
+    <div class="mb-3">
+      <label for="Author" class="form-label">Author</label>
+      <input type="text" class="form-control" [(ngModel)]="Data.author_name" id="Author" name="author_name">
+      @if (submitted && !Data.author_name.trim()) {
+      <p class="alert alert-danger mt-2">
+        Author name is required.
+      </p>
+      }
+      <!-- @if (errors.author_name) {
+      <p class="alert alert-danger mt-2">{{ errors.author_name[0] }}</p>
+      } -->
+
+    </div>
+    <div class="mb-3">
+      <label for="Title" class="form-label">Title</label>
+      <input type="text" class="form-control" [(ngModel)]="Data.title" name='title' id="Title">
+      @if (submitted && !Data.title.trim()) {
+      <p class="alert alert-danger mt-2">
+        title name is required.
+      </p>
+      }
+      <!-- @if (errors.title) {
+      <p class="alert alert-danger mt-2">{{ errors.title[0] }}</p>
+      } -->
+    </div>
+    <div class="mb-3">
+      <label for="Body" class="form-label">Body</label>
+      <textarea rows="5" class="form-control" [(ngModel)]="Data.body" name='body' id="Body"></textarea>
+      @if (submitted && !Data.body.trim()) {
+      <p class="alert alert-danger mt-2">
+        body is required.
+      </p>
+      }
+      <!-- @if (errors.body) {
+      <p class="alert alert-danger mt-2">{{ errors.body[0] }}</p>
+      } -->
+    </div>
+
+    <button type="submit" class="btn btn-info w-100">Edit</button>
+  </form>

@@ -1,0 +1,74 @@
+<div class="container mt-5">
+
+  <form (ngSubmit)='addPost()' class="w-50 m-auto" method="Post">
+
+    <div class="mb-3">
+      <label for="Author" class="form-label">Author</label>
+      <input type="text" class="form-control" [(ngModel)]="Data.author_name" name='author_name' id=" Author">
+
+      @if (submitted && !Data.author_name.trim()) {
+      <p class="alert alert-danger mt-2">
+        author name is required.
+      </p>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="Title" class="form-label">Title</label>
+      <input type="text" class="form-control" [(ngModel)]="Data.title" name='title' id=" Title">
+      @if (submitted && !Data.title.trim()) {
+      <p class="alert alert-danger mt-2">
+        title is required.
+      </p>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="Body" class="form-label">Body</label>
+      <textarea rows="5" [(ngModel)]="Data.body" class="form-control" name='body' id=" Body"></textarea>
+
+      @if (submitted && !Data.body.trim()) {
+      <p class="alert alert-danger mt-2">
+        body is required.
+      </p>
+      }
+    </div>
+
+    <button type="submit" class="btn btn-success w-100">Add</button>
+  </form>
+
+
+  <!--
+  <form action="{{ route('post.add.submit') }}" class="w-50 m-auto" method="Post">
+    @session('success')
+    <p class="alert alert-success mt-2">{{$value}}</p>
+    @endsession
+    <div class="mb-3">
+      <label for="Author" class="form-label">Author</label>
+      <input type="text" class="form-control" name='author_name' value="{{ old('author_name')}}" id=" Author"
+        >
+      @error('author_name')
+      <p class="alert alert-danger mt-2">{{$message}}</p>
+      @enderror
+    </div>
+    <div class="mb-3">
+      <label for="Title" class="form-label">Title</label>
+      <input type="text" class="form-control" name='title' value="{{ old('title')}}" id=" Title"
+        >
+      @error('title')
+      <p class="alert alert-danger mt-2">{{$message}}</p>
+      @enderror
+    </div>
+    <div class="mb-3">
+      <label for="Body" class="form-label">Body</label>
+      <textarea rows="5" class="form-control" name='body' value="{{ old('body')}}" id=" Body"
+        ></textarea>
+      @error('body')
+      <p class="alert alert-danger mt-2">{{$message}}</p>
+      @enderror
+    </div>
+
+    <button type="submit" class="btn btn-success w-100">Add</button>
+  </form>
+  -->
+
+
+</div>

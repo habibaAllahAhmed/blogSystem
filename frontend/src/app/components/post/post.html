@@ -1,0 +1,34 @@
+<div class="post position-relative border rounded-3 border-light p-3">
+  <div class="row">
+    <div class="col-lg-2 text-center">
+      <div class="item">
+        @if (post.deleted_at !==null) {
+        <span class="badge text-bg-danger position-absolute"
+          style="width: fit-content; top:10px; right:10px;">Deleted</span>
+        }
+        <h5>{{ post.author_name }}</h5>
+        <img src="images/default.png" class="img-fluid" style="width: 100px;" alt="">
+      </div>
+    </div>
+    <div class="col-lg-10">
+      <div class="item">
+        <h4 class="mb-2">{{ post.title }}</h4>
+        <h5 class="mb-2">{{ post.created_at | date:'MMMM d, y, h:mm a' }}</h5>
+        <p class="mb-2">{{ post.body }}</p>
+
+        @if (operations) {
+        <div class="operations">
+          @if (post.deleted_at ==null) {
+          <button type="button" (click)="goToEditPage()" class=" btn me-2 btn-info">Edit</button>
+          <a (click)='deletePost()' class="btn me-2 btn-warning">Delete</a>
+          }
+          @if (post.deleted_at !==null) {
+          <a (click)='restorePost()' class="btn me-2 btn-primary">restore</a>
+          }
+          <a (click)='forceDeletePost()' class="btn btn-danger">Force delete</a>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>
