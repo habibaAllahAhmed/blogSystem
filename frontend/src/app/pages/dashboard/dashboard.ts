@@ -32,7 +32,7 @@ export class Dashboard {
   }
 
   deletePost(id: number) {
-    this.posts.update(posts => posts.map(post => post.id === id ? { ...post, deleted_at: new Date().toISOString() } : post));
+    this.posts.update(posts => posts.map(post => post.id === id ? { ...post, deleted_at: new Date() } : post));
   }
 
   restorePost(id: number) {
